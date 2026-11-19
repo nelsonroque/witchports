@@ -22,8 +22,8 @@ from .listeners import (
 )
 
 # These shades are in the xterm 256-color palette used by many terminals.
-WITCHPORTS_DARK = Theme(
-    name="witchports-dark",
+WITCHPORT_DARK = Theme(
+    name="witchport-dark",
     primary="#87d7ff",
     secondary="#bcbcbc",
     foreground="#eeeeee",
@@ -79,8 +79,8 @@ class ConfirmStop(ModalScreen[bool]):
         self.dismiss(event.button.id == "confirm")
 
 
-class WitchportsApp(App[None]):
-    TITLE = "Witchports"
+class WitchportApp(App[None]):
+    TITLE = "Witchport"
     ENABLE_COMMAND_PALETTE = False
     BINDINGS: ClassVar[list[BindingType]] = [
         Binding("f5", "scan", "Rescan"),
@@ -156,8 +156,8 @@ class WitchportsApp(App[None]):
 
     def __init__(self) -> None:
         super().__init__()
-        self.register_theme(WITCHPORTS_DARK)
-        self.theme = WITCHPORTS_DARK.name
+        self.register_theme(WITCHPORT_DARK)
+        self.theme = WITCHPORT_DARK.name
         self.listeners: list[Listener] = []
         self.visible_listeners: dict[str, Listener] = {}
         self.ports = PortRange()
@@ -169,7 +169,7 @@ class WitchportsApp(App[None]):
 
     def compose(self) -> ComposeResult:
         with Horizontal(id="masthead"):
-            yield Static("Witchports", id="title")
+            yield Static("Witchport", id="title")
             yield Static("", id="status", markup=False)
         with Horizontal(id="controls"):
             with Horizontal(id="range-tools"):

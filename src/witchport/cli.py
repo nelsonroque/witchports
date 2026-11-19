@@ -29,7 +29,7 @@ def _port(value: str) -> int:
 
 def _parse_args(argv: list[str] | None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        prog="witchports", description="Find and stop local TCP listeners."
+        prog="witchport", description="Find and stop local TCP listeners."
     )
     commands = parser.add_subparsers(dest="command")
     commands.add_parser("tui", help="open the interactive dashboard (default)")
@@ -135,11 +135,11 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command in {"stop", "kill"}:
             return _stop(args)
         else:
-            from .tui import WitchportsApp
+            from .tui import WitchportApp
 
-            WitchportsApp().run()
+            WitchportApp().run()
     except ListenerError as error:
-        print(f"witchports: {error}", file=sys.stderr)
+        print(f"witchport: {error}", file=sys.stderr)
         return 1
     except (KeyboardInterrupt, EOFError):
         return 130

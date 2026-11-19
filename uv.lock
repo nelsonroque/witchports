@@ -127,7 +127,7 @@ wheels = [
 ]
 
 [[package]]
-name = "witchports"
+name = "witchport"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

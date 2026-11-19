@@ -353,7 +353,7 @@ def stop_listener(listener: Listener, force: bool = False) -> bool:
     ancestor = os.getpid()
     while ancestor > 1:
         if listener.pid == ancestor:
-            raise ListenerError("Cannot stop Witchports or a process that launched it.")
+            raise ListenerError("Cannot stop Witchport or a process that launched it.")
         process = processes.get(ancestor)
         if process is None or process.parent == ancestor:
             break
